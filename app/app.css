@@ -97,3 +97,5 @@ footer a:hover img { transform: translateY(-1px); }
   .contact-grid { grid-template-columns: 1fr; }
   .nav__inner { height: auto; gap: 12px; padding: 8px 16px; flex-wrap: wrap; }
 }
+
+#nav-menu a:hover { background: #0e1218; }

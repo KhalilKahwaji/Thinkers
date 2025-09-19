@@ -3,6 +3,7 @@ export default function Hero() {
     <section
       style={{
         padding: "72px 0",
+        paddingLeft: "15px",
         borderBottom: "1px solid #222",
         background:
           "linear-gradient(120deg, rgba(196,154,108,.08), rgba(0,0,0,0))",
