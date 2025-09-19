@@ -19,6 +19,7 @@ export default function Navbar() {
         <div className="nav__links">
           <NavLink to="/" style={linkStyle}>Home</NavLink>
           <NavLink to="/events" style={linkStyle}>Events</NavLink>
+          <NavLink to="/tour" style={linkStyle}>Virtual Tour</NavLink>
         </div>
       </nav>
     </header>

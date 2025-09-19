@@ -68,7 +68,7 @@ export default function Home() {
           name="Jeff Ghorra"
           role="Founder & Co-CEO"
           photoUrl="/Jeff.jpg" 
-          bio="Entrepreneur and Co-founder/Managing Partner @thinkersccc."
+          bio="Entrepreneur F&B | Community Builder | Humanitarian Leader | Development Advocate"
         />
       </Section>
 
