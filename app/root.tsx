@@ -19,6 +19,9 @@ export function links() {
   return [
     { rel: "stylesheet", href: stylesheet },
 
+    { rel: "icon", type: "image/png", sizes: "32x32", href: "/logo_circle.png?v=2" },
+    { rel: "shortcut icon", href: "/logo_circle.png?v=2" },
+    { rel: "apple-touch-icon", sizes: "180x180", href: "/logo_circle.png?v=2" },
     // Roboto (400/500/700 covers body, buttons, headings)
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
     { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
