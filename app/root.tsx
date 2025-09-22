@@ -1,5 +1,12 @@
 // app/root.tsx
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useMatches, // ← import this
+} from "react-router";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import stylesheet from "./app.css?url";
@@ -40,6 +47,14 @@ export function meta() {
 }
 
 export default function Root() {
+  const matches = useMatches();
+  // If the deepest matched route asked for a blank layout, hide navbar/footer
+  const isBlankLayout = matches.some((m: any) => m.handle?.layout === "blank");
+
+  const mainStyle = isBlankLayout
+    ? { maxWidth: "100%", margin: 0, padding: 0 } // full-bleed
+    : { maxWidth: 1100, margin: "0 auto", padding: "24px 16px" };
+
   return (
     <html lang="en">
       <head>
@@ -53,11 +68,11 @@ export default function Root() {
           margin: 0,
         }}
       >
-        <Navbar />
-        <main style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 16px" }}>
+        {!isBlankLayout && <Navbar />}
+        <main style={mainStyle}>
           <Outlet />
         </main>
-        <Footer />
+        {!isBlankLayout && <Footer />}
         <ScrollRestoration />
         <Scripts />
       </body>

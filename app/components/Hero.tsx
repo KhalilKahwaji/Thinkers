@@ -12,7 +12,7 @@ export default function Hero() {
     >
       <h1 style={{ fontSize: 40, marginBottom: 12 }}>Thinkers C.C.C</h1>
       <p style={{ color: "var(--muted)", maxWidth: 680 }}>
-        A community café and cultural hub — coffee, workspace, and events.
+        A community café and cultural hub - coffee, workspace, and events.
       </p>
 
       <div style={{ marginTop: 20, display: "flex", gap: 12 }}>
@@ -30,7 +30,7 @@ export default function Hero() {
           Explore Menu & Spaces
         </a>
         <a
-          href="#contact"
+          href="/contact"
           style={{
             padding: "10px 16px",
             border: "1px solid var(--accent)",

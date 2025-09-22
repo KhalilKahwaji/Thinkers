@@ -1,9 +1,40 @@
+// app/components/Navbar.tsx
 import { NavLink } from "react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import logo from "../assets/icons/logo_circle.png";
+
+type MoreLink = { to: string; label: string };
+
+const MORE_LINKS: MoreLink[] = [
+  { to: "/concept", label: "Concept & Identity" },
+  { to: "/community", label: "Community Role" },
+  { to: "/mission", label: "Mission & Vision" },
+  { to: "/expansion", label: "Expansion & Resilience" },
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const btnRef = useRef<HTMLButtonElement | null>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  // ESC to close
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  // Click outside to close
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      const t = e.target as Node;
+      if (!menuRef.current || !btnRef.current) return;
+      if (!menuRef.current.contains(t) && !btnRef.current.contains(t)) setOpen(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, [open]);
 
   const linkStyle = ({ isActive }: { isActive: boolean }) => ({
     padding: "8px 12px",
@@ -20,78 +51,45 @@ export default function Navbar() {
           <span>Thinkers C.C.C</span>
         </NavLink>
 
-        <div className="nav__links" style={{ display: "flex", gap: 6, alignItems: "center" }}>
+        <div className="nav__links">
           <NavLink to="/" style={linkStyle}>Home</NavLink>
           <NavLink to="/events" style={linkStyle}>Events</NavLink>
           <NavLink to="/tour" style={linkStyle}>Virtual Tour</NavLink>
-
-          {/* NEW: Contact Us visible in navbar */}
           <NavLink to="/contact" style={linkStyle}>Contact Us</NavLink>
 
-          {/* NEW: Hamburger menu with everything else */}
+          {/* Hamburger (dropdown toggle) */}
           <button
+            ref={btnRef}
+            className={`hamb ${open ? "is-open" : ""}`}
             onClick={() => setOpen((s) => !s)}
             aria-expanded={open}
-            aria-controls="nav-menu"
-            aria-label="Open menu"
-            style={{
-              marginLeft: 8,
-              padding: "8px 10px",
-              borderRadius: 8,
-              border: "1px solid #2a2f38",
-              background: "transparent",
-              color: "#cbd5e1",
-              cursor: "pointer",
-            }}
+            aria-controls="nav-dropdown"
+            aria-haspopup="true"
+            aria-label={open ? "Close menu" : "Open menu"}
           >
-            ☰
+            <span />
           </button>
         </div>
       </nav>
 
-      {/* Panel */}
-      {open && (
-        <div
-          id="nav-menu"
-          role="menu"
-          style={{
-            position: "absolute",
-            right: 16,
-            top: 72,
-            width: 280,
-            background: "var(--card)",
-            border: "1px solid #23262d",
-            borderRadius: 12,
-            boxShadow: "0 10px 30px rgba(0,0,0,.35)",
-            padding: 10,
-            zIndex: 20,
-          }}
-          onClick={() => setOpen(false)}
-        >
-          <MenuLink to="/concept" label="Concept & Identity" />
-          <MenuLink to="/offerings" label="Offerings" />
-          <MenuLink to="/expansion" label="Expansion & Resilience" />
-          <MenuLink to="/community" label="Community Role" />
-          <MenuLink to="/mission" label="Mission & Vision" />
+      {/* Dropdown panel */}
+      <div
+        id="nav-dropdown"
+        ref={menuRef}
+        className={`nav__dropdown ${open ? "open" : ""}`}
+        role="menu"
+        aria-label="More"
+        onClick={() => setOpen(false)} // clicking a link closes
+      >
+        <div className="dd__section" onClick={(e) => e.stopPropagation()}>
+          <h5>About</h5>
+          <ul className="dd__links">
+            {MORE_LINKS.map((l) => (
+              <li key={l.to}><NavLink to={l.to}>{l.label}</NavLink></li>
+            ))}
+          </ul>
         </div>
-      )}
+      </div>
     </header>
-  );
-}
-
-function MenuLink({ to, label }: { to: string; label: string }) {
-  return (
-    <NavLink
-      to={to}
-      style={{
-        display: "block",
-        padding: "10px 12px",
-        borderRadius: 8,
-        color: "#e5e7eb",
-        textDecoration: "none",
-      }}
-    >
-      {label}
-    </NavLink>
   );
 }
