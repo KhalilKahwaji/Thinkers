@@ -19,24 +19,17 @@ export function links() {
   return [
     { rel: "stylesheet", href: stylesheet },
 
-    // Favicon / icons (PNG in /public)
-    { rel: "icon", type: "image/png", href: "/logo_circle.png" },
-    { rel: "apple-touch-icon", sizes: "180x180", href: "/logo_circle.png" },
-
-    // Fonts (keep or remove as you prefer)
+    // Roboto (400/500/700 covers body, buttons, headings)
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
     { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
     {
       rel: "stylesheet",
       href:
-        "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@600&display=swap",
+        "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap",
     },
-
-    // If you imported from src/assets, replace the PNG lines above with:
-    // { rel: "icon", type: "image/png", href: logoIcon },
-    // { rel: "apple-touch-icon", sizes: "180x180", href: logoIcon },
   ];
 }
+
 
 export function meta() {
   return [

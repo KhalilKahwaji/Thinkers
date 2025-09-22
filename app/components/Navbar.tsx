@@ -36,12 +36,14 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", onDown);
   }, [open]);
 
-  const linkStyle = ({ isActive }: { isActive: boolean }) => ({
+  /*const linkStyle = ({ isActive }: { isActive: boolean }) => ({
     padding: "8px 12px",
     textDecoration: "none",
     color: isActive ? "#fff" : "#cbd5e1",
     borderBottom: isActive ? "2px solid var(--accent)" : "2px solid transparent",
-  });
+  });*/
+const linkClass = ({ isActive }: { isActive: boolean }) =>
+  `nav__link${isActive ? " is-active" : ""}`;
 
   return (
     <header className="nav">
@@ -52,10 +54,10 @@ export default function Navbar() {
         </NavLink>
 
         <div className="nav__links">
-          <NavLink to="/" style={linkStyle}>Home</NavLink>
-          <NavLink to="/events" style={linkStyle}>Events</NavLink>
-          <NavLink to="/tour" style={linkStyle}>Virtual Tour</NavLink>
-          <NavLink to="/contact" style={linkStyle}>Contact Us</NavLink>
+          <NavLink to="/" className={linkClass}>Home</NavLink>
+          <NavLink to="/events" className={linkClass}>Events</NavLink>
+          <NavLink to="/tour" className={linkClass}>Virtual Tour</NavLink>
+          <NavLink to="/contact" className={linkClass}>Contact Us</NavLink>
 
           {/* Hamburger (dropdown toggle) */}
           <button

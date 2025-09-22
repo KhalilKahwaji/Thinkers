@@ -2,6 +2,7 @@ import type { Route } from "./+types/events";
 import { useMemo, useState } from "react";
 import EventCard from "../components/EventCard";
 import { events, type Branch } from "../data/events";
+import Reveal from "../components/Reveal";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -56,28 +57,31 @@ export default function Events() {
       </div>
 
       {/* Upcoming */}
-      {upcoming.length > 0 && (
-        <>
-          <h2 style={{ margin: "12px 0" }}>Upcoming Events</h2>
-          <div style={{ display: "grid", gap: 16 }}>
-            {upcoming.map((ev) => (
-              <EventCard key={ev.id} ev={ev} />
-            ))}
-          </div>
-        </>
-      )}
+     {upcoming.length > 0 && (
+  <>
+    <h2 style={{ margin: "12px 0" }}>Upcoming</h2>
+    <div style={{ display: "grid", gap: 16 }}>
+      {upcoming.map((ev, i) => (
+        <Reveal key={ev.id} delay={i * 80}>
+          <EventCard ev={ev} />
+        </Reveal>
+      ))}
+    </div>
+  </>
+)}
 
-      {/* Past */}
-      {past.length > 0 && (
-        <>
-          <h2 style={{ margin: "24px 0 12px" }}>Past Events</h2>
-          <div style={{ display: "grid", gap: 16 }}>
-            {past.map((ev) => (
-              <EventCard key={ev.id} ev={ev} />
-            ))}
-          </div>
-        </>
-      )}
+{past.length > 0 && (
+  <>
+    <h2 style={{ margin: "24px 0 12px" }}>Past</h2>
+    <div style={{ display: "grid", gap: 16 }}>
+      {past.map((ev, i) => (
+        <Reveal key={ev.id} delay={i * 60} variant="left">
+          <EventCard ev={ev} />
+        </Reveal>
+      ))}
+    </div>
+  </>
+)}
 
       {/* Empty state */}
       {upcoming.length === 0 && past.length === 0 && (
