@@ -48,10 +48,10 @@ const linkClass = ({ isActive }: { isActive: boolean }) =>
   return (
     <header className="nav">
       <nav className="nav__inner">
-        <NavLink to="/" className="nav__brand">
-          <img src={logo} alt="Thinkers logo" width={28} height={28} />
-          <span>Thinkers C.C.C</span>
-        </NavLink>
+      <NavLink to="/" className="nav__brand">
+        <img src="/favicon.svg" alt="Thinkers logo" width={60} height={60} />
+        <span className="logo-anim">Thinkers C.C.C</span>
+      </NavLink>
 
         <div className="nav__links">
           <NavLink to="/" className={linkClass}>Home</NavLink>

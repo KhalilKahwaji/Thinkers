@@ -11,17 +11,17 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import stylesheet from "./app.css?url";
 
-// If instead you keep the image under src (e.g. app/assets/logo_circle.png),
+// If instead you keep the image under src (e.g. app/assets/favicon.svg),
 // you can import it like this and use `href: logoIcon` below:
-// import logoIcon from "./assets/logo_circle.png?url";
+// import logoIcon from "./assets/favicon.svg?url";
 
 export function links() {
   return [
     { rel: "stylesheet", href: stylesheet },
 
-    { rel: "icon", type: "image/png", sizes: "32x32", href: "/logo_circle.png?v=2" },
-    { rel: "shortcut icon", href: "/logo_circle.png?v=2" },
-    { rel: "apple-touch-icon", sizes: "180x180", href: "/logo_circle.png?v=2" },
+    { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon.svg?v=2" },
+    { rel: "shortcut icon", href: "/favicon.svg?v=2" },
+    { rel: "apple-touch-icon", sizes: "180x180", href: "/favicon.svg?v=2" },
     // Roboto (400/500/700 covers body, buttons, headings)
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
     { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },

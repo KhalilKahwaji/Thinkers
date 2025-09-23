@@ -16,6 +16,7 @@
   /* Brand (coffee tones) */
   --accent:#8b5e34;        /* espresso */
   --accent-2:#c49a6c;      /* latte */
+  --spark:#fcd34d;         /* highlight */
 }
 
 /* --------- Global / Typography --------- */
@@ -286,7 +287,7 @@ section { scroll-margin-top: 88px; }
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 24px;
-  align-items: center;
+
   min-height: 62vh;
 }
 .hero__copy h1 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 10px; }
@@ -313,7 +314,6 @@ section { scroll-margin-top: 88px; }
   border-radius: 16px;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
-  animation: heroFloat 8s ease-in-out infinite;
   will-change: transform, box-shadow;
 }
 @keyframes heroGlow { 0%{ transform: translateY(0) scale(1); opacity:.9; } 100%{ transform: translateY(-6px) scale(1.03); opacity:1; } }
@@ -377,4 +377,68 @@ section { scroll-margin-top: 88px; }
   .nav__link, .btn, .event-card, .event-card__media img, .footer__social a img {
     transition: none !important;
   }
+}
+
+/* Animated text fill for the brand */
+.logo-anim{
+  font-weight: 700;
+  /* use your brand colors */
+  background: linear-gradient(90deg, var(--accent-2), var(--accent), var(--accent-2));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* ensures only the text shows the gradient */
+  animation: logoShimmer 4s linear infinite;
+  text-shadow: 0 0 30px rgba(139,94,52,.18); /* soft glow, optional */
+}
+
+@keyframes logoShimmer{
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .logo-anim{ animation: none; }
+}
+
+/* ===== Animated Headline (clean, crisp, replays on hover via remount) ===== */
+.headline{
+  margin: 0;                   /* no extra top space */
+  line-height: 1.05;
+  letter-spacing: .02em;
+  font-size: clamp(28px, 6vw, 54px);
+  display: inline-block;
+}
+
+.headline__word{
+  display: block;              /* each word on its own line */
+  margin: 2px 0;
+}
+
+.headline__letter{
+  display: inline-block;
+  transform: translateY(24px); /* crisp: no blur, no skew */
+  opacity: 0;
+  animation: headlinePop .7s cubic-bezier(.22,.9,.24,1) forwards;
+  will-change: transform, opacity;
+  /* soft, light-theme shadow (very subtle) */
+  text-shadow: rgba(15,23,42,.06) 1px 1px, rgba(15,23,42,.04) 2px 2px;
+}
+
+@keyframes headlinePop{
+  0%   { opacity: 0; transform: translateY(24px); }
+  60%  { opacity: 1; transform: translateY(-3px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* your brand colors per word */
+.word-1{ color: var(--accent-2); }  /* latte */
+.word-2{ color: var(--accent); }    /* espresso */
+.word-3{ color: #0f172a; }          /* deep text */
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .headline__letter{ animation: none !important; opacity: 1; transform: none; }
+  .headline__word{ transform: none; }
 }

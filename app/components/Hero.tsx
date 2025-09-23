@@ -1,5 +1,6 @@
 // app/components/Hero.tsx
 import heroImg from "../assets/hero/hero-coffee.jpg";
+import AnimatedHeadline from "./AnimatedHeadline";
 
 export default function Hero() {
   return (
@@ -7,9 +8,11 @@ export default function Hero() {
       <div className="hero__inner">
         {/* Left: copy */}
         <div className="hero__copy">
-          <h1>Coffee. Community. Creativity.</h1>
+          <AnimatedHeadline
+            words={["Coffee.", "Community.", "Creativity."]}
+          />
           <p className="hero__sub">
-            Thinkers C.C.C is your neighborhood hub—specialty coffee, flexible workspaces,
+            Thinkers C.C.C is your neighborhood hub - specialty coffee, flexible workspaces,
             and events that bring people together.
           </p>
 
