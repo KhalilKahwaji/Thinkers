@@ -5,34 +5,32 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useMatches, // ← import this
+  useMatches,
 } from "react-router";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import stylesheet from "./app.css?url";
-
-// If instead you keep the image under src (e.g. app/assets/favicon.svg),
-// you can import it like this and use `href: logoIcon` below:
-// import logoIcon from "./assets/favicon.svg?url";
 
 export function links() {
   return [
     { rel: "stylesheet", href: stylesheet },
 
-    { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon.svg?v=2" },
-    { rel: "shortcut icon", href: "/favicon.svg?v=2" },
-    { rel: "apple-touch-icon", sizes: "180x180", href: "/favicon.svg?v=2" },
-    // Roboto (400/500/700 covers body, buttons, headings)
+    // Single favicon we control at runtime (we'll swap href with matchMedia)
+    { rel: "icon", type: "image/svg+xml", href: "/favicon-dark.svg?v=3", id: "favicon" },
+
+    // iOS / legacy fallback
+    { rel: "apple-touch-icon", sizes: "180x180", href: "/logo_circle.png?v=3" },
+
+    // Fonts
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
     { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
     {
       rel: "stylesheet",
-      href:
-        "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap",
+      href: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap",
     },
   ];
 }
-
 
 export function meta() {
   return [
@@ -44,6 +42,26 @@ export function meta() {
 
 export default function Root() {
   const matches = useMatches();
+
+  // Swap favicon based on OS theme (inverted mapping):
+  // Dark theme  -> /favicon-light.svg
+  // Light theme -> /favicon-dark.svg
+  useEffect(() => {
+    const mq = window.matchMedia?.("(prefers-color-scheme: dark)");
+
+    const apply = () => {
+      const link = document.querySelector<HTMLLinkElement>('link#favicon');
+      if (!link) return;
+      link.href = mq?.matches
+        ? "/favicon-light.svg?v=3"
+        : "/favicon-dark.svg?v=3";
+    };
+
+    apply();
+    mq?.addEventListener("change", apply);
+    return () => mq?.removeEventListener("change", apply);
+  }, []);
+
   // If the deepest matched route asked for a blank layout, hide navbar/footer
   const isBlankLayout = matches.some((m: any) => m.handle?.layout === "blank");
 
@@ -60,15 +78,18 @@ export default function Root() {
       <body
         style={{
           fontFamily:
-            "system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji'",
+            "Roboto, system-ui, -apple-system, Segoe UI, Ubuntu, Cantarell, 'Noto Sans', 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji'",
           margin: 0,
         }}
       >
         {!isBlankLayout && <Navbar />}
+
         <main style={mainStyle}>
           <Outlet />
         </main>
+
         {!isBlankLayout && <Footer />}
+
         <ScrollRestoration />
         <Scripts />
       </body>

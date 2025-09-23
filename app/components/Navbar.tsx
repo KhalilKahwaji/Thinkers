@@ -49,7 +49,7 @@ const linkClass = ({ isActive }: { isActive: boolean }) =>
     <header className="nav">
       <nav className="nav__inner">
       <NavLink to="/" className="nav__brand">
-        <img src="/favicon.svg" alt="Thinkers logo" width={60} height={60} />
+        <img src="/favicon-dark.svg" alt="Thinkers logo" width={75} height={75} />
         <span className="logo-anim">Thinkers C.C.C</span>
       </NavLink>
 

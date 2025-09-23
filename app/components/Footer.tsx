@@ -14,7 +14,7 @@ export default function Footer() {
         {/* Brand / blurb */}
         <div className="footer__brand">
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-            <img src="/logo_circle.png" width={28} height={28} alt="Thinkers logo" />
+            <img src="/favicon-dark.svg" width={75} height={75} alt="Thinkers logo" />
             <strong>Thinkers C.C.C</strong>
           </div>
           <p>Community café & cultural hub - coffee, workspaces, and events across Lebanon.</p>
