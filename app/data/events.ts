@@ -11,16 +11,16 @@ export type Branch = "Zahle" | "Jounieh" | "Jbeil";
 export type EventItem = {
   id: string;
   title: string;
-  dateStartISO: string;   // event start time (ISO)
-  doorsISO?: string;      // doors open time (ISO)
+  dateStartISO: string; // event start time (ISO)
+  doorsISO?: string; // doors open time (ISO)
   branch: Branch;
   priceUSD: number;
-  rsvpPhone?: string;     // tel: link
-  image: string;          // poster / photo
+  rsvpPhone?: string; // tel: link
+  image: string; // poster / photo
   description?: string;
   tags?: string[];
-  mapsQuery?: string;     // for Directions button
-  ticketsUrl?: string;    // optional external link
+  mapsQuery?: string; // for Directions button
+  ticketsUrl?: string; // optional external link
 };
 
 // Branch → RSVP phone
@@ -41,7 +41,7 @@ export const events: EventItem[] = [
   // ——— PAST ———
   {
     id: "john-achkar-watch-2025-08-10",
-    title: 'Community Watch Night: “John Achkar — Tryin’”',
+    title: "Community Watch Night: “John Achkar — Tryin’”",
     dateStartISO: "2025-08-10T20:30:00+03:00",
     doorsISO: "2025-08-10T20:00:00+03:00",
     branch: "Zahle",
@@ -61,7 +61,8 @@ export const events: EventItem[] = [
     priceUSD: 0, // promo — prices discounted at POS
     rsvpPhone: branchPhone["Jounieh"],
     image: ev2,
-    description: "Bring your besties and unwind. All drinks at half price from 6:00–8:00 PM.",
+    description:
+      "Bring your besties and unwind. All drinks at half price from 6:00–8:00 PM.",
     tags: ["Promo", "Drinks"],
     mapsQuery: mapsByBranch["Jounieh"],
   },

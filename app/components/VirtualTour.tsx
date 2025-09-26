@@ -3,11 +3,11 @@ import { useMemo } from "react";
 type Props = {
   /** Matterport model ID, e.g. "jAHBNyfoc3a" */
   modelId: string;
-  autoplay?: boolean;   // play=1
-  brand?: boolean;      // brand=0 hides top brand bar if false
-  title?: boolean;      // title=0 hides model title if false
+  autoplay?: boolean; // play=1
+  brand?: boolean; // brand=0 hides top brand bar if false
+  title?: boolean; // title=0 hides model title if false
   quickstart?: boolean; // qs=1 (faster load)
-  dollhouse?: boolean;  // dh=1 (hide dollhouse)
+  dollhouse?: boolean; // dh=1 (hide dollhouse)
 };
 
 export default function VirtualTour({
@@ -29,19 +29,27 @@ export default function VirtualTour({
   }, [modelId, autoplay, brand, title, quickstart, dollhouse]);
 
   return (
-    <div style={{
-      position: "relative",
-      paddingTop: "56.25%", /* 16:9 */
-      borderRadius: 12,
-      overflow: "hidden",
-      border: "1px solid #23262d",
-    }}>
+    <div
+      style={{
+        position: "relative",
+        paddingTop: "56.25%" /* 16:9 */,
+        borderRadius: 12,
+        overflow: "hidden",
+        border: "1px solid #23262d",
+      }}
+    >
       <iframe
         title="Thinkers Virtual Tour"
         src={src}
         allow="fullscreen; xr-spatial-tracking"
         allowFullScreen
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          border: 0,
+        }}
       />
     </div>
   );

@@ -29,7 +29,9 @@ export default function Reveal({
 
   useEffect(() => {
     // Respect reduced motion
-    const mq = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)");
+    const mq =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)");
     if (mq && mq.matches) {
       setVisible(true);
       return;
@@ -50,7 +52,7 @@ export default function Reveal({
           }
         }
       },
-      { threshold }
+      { threshold },
     );
     io.observe(el);
     return () => io.disconnect();

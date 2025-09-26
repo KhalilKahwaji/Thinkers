@@ -5,7 +5,10 @@ import Contact from "../components/Contact";
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Contact Us • Thinkers C.C.C" },
-    { name: "description", content: "Reach Thinkers C.C.C branches and find us on the map." },
+    {
+      name: "description",
+      content: "Reach Thinkers C.C.C branches and find us on the map.",
+    },
   ];
 }
 

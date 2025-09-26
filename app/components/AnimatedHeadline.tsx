@@ -33,7 +33,9 @@ export default function AnimatedHeadline({
               <span
                 key={i}
                 className="headline__letter"
-                style={{ animationDelay: `${baseDelay + i * delayPerLetterMs}ms` }}
+                style={{
+                  animationDelay: `${baseDelay + i * delayPerLetterMs}ms`,
+                }}
               >
                 {ch === " " ? "\u00A0" : ch}
               </span>

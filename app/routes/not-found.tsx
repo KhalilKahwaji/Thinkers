@@ -21,7 +21,9 @@ export default function NotFoundPage() {
       <div className="nf_bottom">
         <h3 className="h2">Looks like you're lost</h3>
         <p>the page you are looking for is not avaible!</p>
-        <Link to="/" className="link_404">Go back home</Link>
+        <Link to="/" className="link_404">
+          Go back home
+        </Link>
       </div>
     </section>
   );

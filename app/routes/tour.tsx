@@ -7,8 +7,8 @@ import VirtualTour from "../components/VirtualTour";
 type Loc = "Zahle" | "Jbeil";
 
 const MODELS: Record<Loc, string> = {
-  Zahle: "jAHBNyfoc3a",   // from https://discover.matterport.com/space/jAHBNyfoc3a
-  Jbeil: "4ekmJS96ppf",   // from https://discover.matterport.com/space/4ekmJS96ppf
+  Zahle: "jAHBNyfoc3a", // from https://discover.matterport.com/space/jAHBNyfoc3a
+  Jbeil: "4ekmJS96ppf", // from https://discover.matterport.com/space/4ekmJS96ppf
 };
 
 export function meta({}: Route.MetaArgs) {
@@ -32,7 +32,14 @@ export default function TourPage() {
         subtitle="Explore the space as if you're there."
       >
         {/* Location switcher */}
-        <div style={{ display: "flex", gap: 8, marginBottom: 12, flexWrap: "wrap" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 8,
+            marginBottom: 12,
+            flexWrap: "wrap",
+          }}
+        >
           {(["Zahle", "Jbeil"] as Loc[]).map((l) => (
             <button
               key={l}

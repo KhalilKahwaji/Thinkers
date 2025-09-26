@@ -17,14 +17,23 @@ export function links() {
     { rel: "stylesheet", href: stylesheet },
 
     // Single favicon we control at runtime (we'll swap href with matchMedia)
-    { rel: "icon", type: "image/svg+xml", href: "/favicon-dark.svg?v=3", id: "favicon" },
+    {
+      rel: "icon",
+      type: "image/svg+xml",
+      href: "/favicon-dark.svg?v=3",
+      id: "favicon",
+    },
 
     // iOS / legacy fallback
     { rel: "apple-touch-icon", sizes: "180x180", href: "/logo_circle.png?v=3" },
 
     // Fonts
     { rel: "preconnect", href: "https://fonts.googleapis.com" },
-    { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+    {
+      rel: "preconnect",
+      href: "https://fonts.gstatic.com",
+      crossOrigin: "anonymous",
+    },
     {
       rel: "stylesheet",
       href: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap",
@@ -50,7 +59,7 @@ export default function Root() {
     const mq = window.matchMedia?.("(prefers-color-scheme: dark)");
 
     const apply = () => {
-      const link = document.querySelector<HTMLLinkElement>('link#favicon');
+      const link = document.querySelector<HTMLLinkElement>("link#favicon");
       if (!link) return;
       link.href = mq?.matches
         ? "/favicon-light.svg?v=3"

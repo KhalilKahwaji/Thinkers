@@ -23,7 +23,9 @@ export default function EventCard({ ev }: { ev: EventItem }) {
       </div>
 
       <div className="event-card__body">
-        <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
+        <div
+          style={{ display: "flex", justifyContent: "space-between", gap: 8 }}
+        >
           <h3 style={{ margin: 0 }}>{ev.title}</h3>
           {past && (
             <span
@@ -42,7 +44,9 @@ export default function EventCard({ ev }: { ev: EventItem }) {
         </div>
 
         {ev.description && (
-          <p style={{ color: "var(--muted)", margin: "8px 0 12px" }}>{ev.description}</p>
+          <p style={{ color: "var(--muted)", margin: "8px 0 12px" }}>
+            {ev.description}
+          </p>
         )}
 
         <div

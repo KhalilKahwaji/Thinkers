@@ -8,17 +8,19 @@ export default function Hero() {
       <div className="hero__inner">
         {/* Left: copy */}
         <div className="hero__copy">
-          <AnimatedHeadline
-            words={["Coffee.", "Community.", "Creativity."]}
-          />
+          <AnimatedHeadline words={["Coffee.", "Community.", "Creativity."]} />
           <p className="hero__sub">
-            Thinkers C.C.C is your neighborhood hub - specialty coffee, flexible workspaces,
-            and events that bring people together.
+            Thinkers C.C.C is your neighborhood hub - specialty coffee, flexible
+            workspaces, and events that bring people together.
           </p>
 
           <div className="hero__ctas">
-            <a href="#offerings" className="btn btn--solid">Explore Offerings</a>
-            <a href="/events" className="btn btn--outline">See Events</a>
+            <a href="#offerings" className="btn btn--solid">
+              Explore Offerings
+            </a>
+            <a href="/events" className="btn btn--outline">
+              See Events
+            </a>
           </div>
         </div>
 

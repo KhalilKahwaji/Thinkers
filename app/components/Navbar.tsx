@@ -30,7 +30,8 @@ export default function Navbar() {
     const onDown = (e: MouseEvent) => {
       const t = e.target as Node;
       if (!menuRef.current || !btnRef.current) return;
-      if (!menuRef.current.contains(t) && !btnRef.current.contains(t)) setOpen(false);
+      if (!menuRef.current.contains(t) && !btnRef.current.contains(t))
+        setOpen(false);
     };
     document.addEventListener("mousedown", onDown);
     return () => document.removeEventListener("mousedown", onDown);
@@ -42,22 +43,35 @@ export default function Navbar() {
     color: isActive ? "#fff" : "#cbd5e1",
     borderBottom: isActive ? "2px solid var(--accent)" : "2px solid transparent",
   });*/
-const linkClass = ({ isActive }: { isActive: boolean }) =>
-  `nav__link${isActive ? " is-active" : ""}`;
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    `nav__link${isActive ? " is-active" : ""}`;
 
   return (
     <header className="nav">
       <nav className="nav__inner">
-      <NavLink to="/" className="nav__brand">
-        <img src="/favicon-dark.svg" alt="Thinkers logo" width={75} height={75} />
-        <span className="logo-anim">Thinkers C.C.C</span>
-      </NavLink>
+        <NavLink to="/" className="nav__brand">
+          <img
+            src="/favicon-dark.svg"
+            alt="Thinkers logo"
+            width={75}
+            height={75}
+          />
+          <span className="logo-anim">Thinkers C.C.C</span>
+        </NavLink>
 
         <div className="nav__links">
-          <NavLink to="/" className={linkClass}>Home</NavLink>
-          <NavLink to="/events" className={linkClass}>Events</NavLink>
-          <NavLink to="/tour" className={linkClass}>Virtual Tour</NavLink>
-          <NavLink to="/contact" className={linkClass}>Contact Us</NavLink>
+          <NavLink to="/" className={linkClass}>
+            Home
+          </NavLink>
+          <NavLink to="/events" className={linkClass}>
+            Events
+          </NavLink>
+          <NavLink to="/tour" className={linkClass}>
+            Virtual Tour
+          </NavLink>
+          <NavLink to="/contact" className={linkClass}>
+            Contact Us
+          </NavLink>
 
           {/* Hamburger (dropdown toggle) */}
           <button
@@ -87,7 +101,9 @@ const linkClass = ({ isActive }: { isActive: boolean }) =>
           <h5>About</h5>
           <ul className="dd__links">
             {MORE_LINKS.map((l) => (
-              <li key={l.to}><NavLink to={l.to}>{l.label}</NavLink></li>
+              <li key={l.to}>
+                <NavLink to={l.to}>{l.label}</NavLink>
+              </li>
             ))}
           </ul>
         </div>

@@ -49,7 +49,9 @@ export default function Offerings() {
           }}
         >
           <h3 style={{ marginBottom: 8 }}>{c.title}</h3>
-          <ul style={{ margin: 0, paddingLeft: "1.1rem", color: "var(--muted)" }}>
+          <ul
+            style={{ margin: 0, paddingLeft: "1.1rem", color: "var(--muted)" }}
+          >
             {c.items.map((i) => (
               <li key={i}>{i}</li>
             ))}

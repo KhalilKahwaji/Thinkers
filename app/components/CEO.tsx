@@ -18,13 +18,16 @@ export default function CEO({
         alt={name}
         width={84}
         height={84}
-        style={{ borderRadius: "50%", objectFit: "cover", border: "1px solid #333" }}
+        style={{
+          borderRadius: "50%",
+          objectFit: "cover",
+          border: "1px solid #333",
+        }}
       />
       <div>
         <h3 style={{ marginBottom: 4 }}>{name}</h3>
         <p style={{ color: "var(--muted)", margin: 0 }}>{role}</p>
         <p style={{ color: "var(--muted)", marginTop: 8, maxWidth: 700 }}>
-          
           {bio}
         </p>
       </div>

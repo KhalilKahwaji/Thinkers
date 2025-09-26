@@ -5,7 +5,10 @@ import Community from "../components/Community";
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Community Role • Thinkers C.C.C" },
-    { name: "description", content: "How we connect and contribute to our community." },
+    {
+      name: "description",
+      content: "How we connect and contribute to our community.",
+    },
   ];
 }
 

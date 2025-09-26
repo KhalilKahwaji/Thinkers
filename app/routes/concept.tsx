@@ -10,17 +10,18 @@ export function meta({}: Route.MetaArgs) {
 
 export default function ConceptPage() {
   return (
-<Section
-        id="concept"
-        title="Concept & Identity"
-        subtitle="Not just coffee: a space for creativity, social connection, and community."
-      >
-        <p style={{ color: "var(--muted)", maxWidth: 760 }}>
-          Thinkers C.C.C isn’t only about coffee, it’s a space designed to inspire creativity, social
-          connection, and community engagement. It blends the feel of a modern café with the
-          atmosphere of a cultural and social hub. The brand has positioned itself as a resilient, forward-
-          thinking business, even in Lebanon’s challenging economic climate.
-        </p>
-      </Section>
+    <Section
+      id="concept"
+      title="Concept & Identity"
+      subtitle="Not just coffee: a space for creativity, social connection, and community."
+    >
+      <p style={{ color: "var(--muted)", maxWidth: 760 }}>
+        Thinkers C.C.C isn’t only about coffee, it’s a space designed to inspire
+        creativity, social connection, and community engagement. It blends the
+        feel of a modern café with the atmosphere of a cultural and social hub.
+        The brand has positioned itself as a resilient, forward- thinking
+        business, even in Lebanon’s challenging economic climate.
+      </p>
+    </Section>
   );
 }
