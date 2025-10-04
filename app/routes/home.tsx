@@ -1,8 +1,7 @@
-// app/routes/home.tsx
 import type { Route } from "./+types/home";
 import Hero from "../components/Hero";
 import Section from "../components/Section";
-import Offerings from "../components/Offerings";
+import OfferingTile from "../components/OfferingTile";
 import CEO from "../components/CEO";
 import Reveal from "../components/Reveal";
 
@@ -20,35 +19,64 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <>
-      {/* Hero zooms in on load/scroll */}
-      <Reveal variant="zoom">
-        <Hero />
-      </Reveal>
+      <Reveal variant="zoom"><Hero /></Reveal>
 
-      {/* Offerings rise in */}
       <Section id="offerings" title="Offerings">
-        <Reveal variant="up">
-          <Offerings />
-        </Reveal>
+        <div style={{ display: "grid", gap: 16 }}>
+          <Reveal>
+            <OfferingTile
+              title="Beverages"
+              image="/tiles/beverages.jpeg"
+              bullets={[
+                "Coffee (Espresso, V60, French Press)",
+                "Iced drinks & refreshers",
+                "Smoothies",
+              ]}
+            />
+          </Reveal>
+
+          <Reveal delay={80}>
+            <OfferingTile
+              title="Food"
+              image="/tiles/food.jpg"
+              bullets={[
+                "Croissants & desserts",
+                "Cold sandwiches",
+                "Salads",
+              ]}
+              imageRight   // put image on the right for variety
+            />
+          </Reveal>
+
+          <Reveal delay={160}>
+            <OfferingTile
+              title="Experience"
+              image="/tiles/experience.jpg"
+              bullets={[
+                "Workspaces for individuals & teams",
+                "Bookings for workshops & meetups",
+                "Community events & cultural nights",
+              ]}
+            />
+          </Reveal>
+        </div>
       </Section>
 
-      {/* Leadership cards: staggered reveal */}
       <Section id="ceo" title="Leadership">
         <div style={{ display: "grid", gap: 24 }}>
           <Reveal variant="up">
             <CEO
               name="Joseph Abdayem"
               role="Founder & Co-CEO"
-              photoUrl="/Joseph.jpg" // ensure file is in /public
+              photoUrl="/Joseph.jpg"
               bio="Development Speaker | Mentorship Coach | Entrepreneur F&B | Humanitarian Specialist"
             />
           </Reveal>
-
           <Reveal variant="up" delay={120}>
             <CEO
               name="Jeff Ghorra"
               role="Founder & Co-CEO"
-              photoUrl="/Jeff.jpg" // ensure file is in /public
+              photoUrl="/Jeff.jpg"
               bio="Entrepreneur F&B | Community Builder | Humanitarian Leader | Development Advocate"
             />
           </Reveal>

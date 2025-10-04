@@ -10,8 +10,8 @@ export default function Hero() {
         <div className="hero__copy">
           <AnimatedHeadline words={["Coffee.", "Community.", "Creativity."]} />
           <p className="hero__sub">
-            Thinkers C.C.C is your neighborhood hub - specialty coffee, flexible
-            workspaces, and events that bring people together.
+            <i>Thinkers C.C.C is your neighborhood hub - specialty coffee, flexible
+            workspaces, and events that bring people together.</i>
           </p>
 
           <div className="hero__ctas">

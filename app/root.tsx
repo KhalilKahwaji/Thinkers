@@ -38,6 +38,10 @@ export function links() {
       rel: "stylesheet",
       href: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap",
     },
+    {
+  rel: "stylesheet",
+  href: "https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap",
+},
   ];
 }
 

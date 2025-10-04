@@ -88,7 +88,7 @@ export default function EventCard({ ev }: { ev: EventItem }) {
         </div>
 
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          {ev.rsvpPhone && (
+          {!past && ev.rsvpPhone && (
             <a
               href={`tel:${ev.rsvpPhone.replace(/\s+/g, "")}`}
               className="btn btn--solid"
@@ -97,7 +97,7 @@ export default function EventCard({ ev }: { ev: EventItem }) {
             </a>
           )}
 
-          {ev.mapsQuery && (
+          {!past && ev.mapsQuery && (
             <a
               href={`https://www.google.com/maps?q=${ev.mapsQuery}`}
               target="_blank"
@@ -108,7 +108,7 @@ export default function EventCard({ ev }: { ev: EventItem }) {
             </a>
           )}
 
-          {ev.ticketsUrl && (
+          {!past && ev.ticketsUrl && (
             <a
               href={ev.ticketsUrl}
               target="_blank"
