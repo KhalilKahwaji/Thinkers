@@ -900,50 +900,68 @@ section {
 
 
 
-
-/* ==================== PHONE FIX PACK (≤900px) ==================== */
+/* ==================== PHONE SIZE BOOST (≤900px) ==================== */
 @media (max-width: 900px){
 
-  /* Stop browser auto-upsizing weirdness + use bigger global type scale */
-  html, body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  /* NAVBAR — bigger brand + links + hamburger */
+  .nav__inner { height: 76px; }
 
+  .nav__brand { 
+    font-size: clamp(18px, 5.2vw, 24px); 
+    gap: 12px;
+  }
+  /* if your logo is an inline SVG that uses .brand-svg */
+  .brand-svg { width: 28px; height: 28px; }
 
-  /* Bump the fluid type scale (affects body + headings everywhere) */
-  :root{
-    --step-0: clamp(16px, 3.8vw, 18px);  /* body */
-    --step-1: clamp(18px, 4.2vw, 20px);  /* small headings / nav */
-    --step-2: clamp(20px, 4.8vw, 22px);
-    --step-3: clamp(22px, 5.6vw, 26px);
-    --step-4: clamp(26px, 6.8vw, 32px);
-    --step-5: clamp(30px, 8.2vw, 44px);
-    --step-6: clamp(34px, 9.4vw, 52px);  /* big headlines */
+  .nav__link { 
+    padding: 12px 16px; 
+    font-size: var(--step-1);
   }
 
-  /* Navbar & hamburger: bigger tap targets */
-  .nav__inner { height: 72px; }
-  .nav__link { padding: 10px 14px; font-size: var(--step-1); }
+  .hamb { 
+    width: 48px; height: 48px; border-radius: 12px;
+  }
+  .hamb span, .hamb::before, .hamb::after { width: 24px; height: 3px; }
+  .hamb::before { top: 14px; }
+  .hamb::after  { top: 30px; }
 
-  .hamb { width: 44px; height: 44px; border-radius: 10px; }
-  .hamb span, .hamb::before, .hamb::after { width: 22px; height: 3px; }
-  .hamb::before { top: 13px; }
-  .hamb::after  { top: 27px; }
+  /* OFFERINGS — larger title + list */
+  .offertile__title { 
+    font-size: clamp(24px, 4.8vw, 30px);
+  }
+  .offertile__list { 
+    font-size: clamp(16px, 3.8vw, 19px);
+  }
 
-  /* Buttons bigger everywhere */
-  .btn { padding: 12px 16px; font-size: var(--step-1); }
+  /* FOOTER — larger headings + links/body */
+  .footer__col h4 { 
+    font-size: 15px !important; 
+    letter-spacing: .06em;
+  }
+  .footer__col a,
+  .footer__brand p,
+  .footer__bar { 
+    font-size: clamp(15px, 3.8vw, 18px);
+  }
 
-  /* Drawer / dropdown links: bigger tap area */
-  .drawer__links a,
-  .dd__links a { padding: 12px 12px; font-size: var(--step-1); }
-
-  /* Hero subtitle a bit larger on phones */
-  .hero__sub { font-size: clamp(16px, 3.4vw, 20px); }
-
-  /* Footer headings were being overridden by global h4 */
-  .footer__col h4 { font-size: 13px !important; letter-spacing: .06em; }
-
-  /* Contain hero glow overflow on phones so layout doesn’t “feel” broken */
-  .hero { overflow: clip; }
-  @supports not (overflow: clip) { .hero { overflow: hidden; } }
-  .hero__visual::before { inset: 0; filter: blur(18px); }
-
+  /* LEADERSHIP / CEO — robust selectors (covers common class/id names) */
+  section[id*="leader" i] h2,
+  section[class*="leader" i] h2,
+  section[id*="founder" i] h2,
+  section[class*="founder" i] h2 {
+    font-size: clamp(22px, 5.6vw, 28px);
+  }
+  section[id*="leader" i] .name,
+  section[class*="leader" i] .name,
+  section[id*="founder" i] .name,
+  section[class*="founder" i] .name {
+    font-size: clamp(18px, 4.6vw, 22px);
+    font-weight: 700;
+  }
+  section[id*="leader" i] p,
+  section[class*="leader" i] p,
+  section[id*="founder" i] p,
+  section[class*="founder" i] p {
+    font-size: clamp(15px, 3.8vw, 18px);
+  }
 }
