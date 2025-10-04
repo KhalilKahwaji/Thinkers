@@ -38,7 +38,7 @@ export default function Home() {
           <Reveal delay={80}>
             <OfferingTile
               title="Food"
-              image="/tiles/food.jpg"
+              image="/tiles/food.png"
               bullets={[
                 "Croissants & desserts",
                 "Cold sandwiches",
