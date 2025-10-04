@@ -51,7 +51,7 @@ export default function Home() {
           <Reveal delay={160}>
             <OfferingTile
               title="Experience"
-              image="/tiles/experience.jpg"
+              image="/tiles/experience.png"
               bullets={[
                 "Workspaces for individuals & teams",
                 "Bookings for workshops & meetups",

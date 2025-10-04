@@ -906,6 +906,7 @@ section {
 
   /* Stop browser auto-upsizing weirdness + use bigger global type scale */
   html, body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body{ transform: scale(1.3); transform-origin: top center; width: calc(100%/1.3); }
 
   /* Bump the fluid type scale (affects body + headings everywhere) */
   :root{
@@ -944,4 +945,5 @@ section {
   .hero { overflow: clip; }
   @supports not (overflow: clip) { .hero { overflow: hidden; } }
   .hero__visual::before { inset: 0; filter: blur(18px); }
+
 }
