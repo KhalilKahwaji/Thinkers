@@ -896,10 +896,18 @@ section {
   .offertile--reverse{
     grid-template-columns: 1fr;
   }
-  .offertile__media{ min-height: 220px; order: -1; } /* force image first */
-  .offertile__body--center{ padding: 22px 16px; }
-}
 
+  /* Always show image first */
+  .offertile__media,
+  .offertile--reverse .offertile__media{
+    order: -1;
+    min-height: 220px;
+  }
+
+  .offertile__body--center{
+    padding: 22px 16px;
+  }
+}
 
 
 

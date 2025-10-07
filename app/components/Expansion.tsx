@@ -3,7 +3,7 @@ export default function Expansion() {
     <div style={{ display: "grid", gap: 16 }}>
       <p style={{ color: "var(--muted)" }}>
         Despite Lebanon’s financial, economic, and security crises, Thinkers
-        C.C.C has grown to multiple locations in Lebanon and one abroad — a
+        C.C.C has grown to multiple locations in Lebanon, a
         signal of brand loyalty and resilient strategy.
       </p>
       <div
@@ -18,10 +18,10 @@ export default function Expansion() {
         >
           <strong>Locations</strong>
           <ul style={{ margin: "8px 0 0 18px", color: "var(--muted)" }}>
-            <li>Beirut</li>
+            <li>Zahle</li>
             <li>Jounieh</li>
             <li>Byblos</li>
-            <li>Abroad: Montenegro</li>
+
           </ul>
         </div>
         <div

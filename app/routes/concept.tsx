@@ -16,7 +16,7 @@ export default function ConceptPage() {
       subtitle="Not just coffee: a space for creativity, social connection, and community."
     >
       <p style={{ color: "var(--muted)", maxWidth: 760 }}>
-        Thinkers C.C.C isn’t only about coffee, it’s a space designed to inspire
+        <strong>Thinkers C.C.C</strong> isn’t only about coffee, it’s a space designed to inspire
         creativity, social connection, and community engagement. It blends the
         feel of a modern café with the atmosphere of a cultural and social hub.
         The brand has positioned itself as a resilient, forward- thinking
