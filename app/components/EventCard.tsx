@@ -17,8 +17,8 @@ export default function EventCard({ ev }: { ev: EventItem }) {
   const past = new Date(ev.dateStartISO).getTime() < Date.now();
 
   return (
-    <article className="event-card">
-      <div className="event-card__media">
+     <article className={`event-card ${past ? "event-card--past" : ""}`}>
+      <div className="event-card__media" /*here if its a past event i want to color it like its muted*/>
         <img src={ev.image} alt={ev.title} loading="lazy" />
       </div>
 
@@ -90,10 +90,11 @@ export default function EventCard({ ev }: { ev: EventItem }) {
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           {!past && ev.rsvpPhone && (
             <a
-              href={`tel:${ev.rsvpPhone.replace(/\s+/g, "")}`}
+              href={`https://wa.me/${ev.rsvpPhone.replace(/\D/g, "")}`}
+              target="_blank"
               className="btn btn--solid"
             >
-              RSVP {ev.rsvpPhone}
+              RSVP
             </a>
           )}
 

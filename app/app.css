@@ -312,6 +312,10 @@ section {
     border-color 0.18s ease;
   will-change: transform;
 }
+.event-card--past{
+  opacity: 0.5;
+  filter: grayscale(40%);
+}
 .event-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
