@@ -1,6 +1,8 @@
 // app/data/events.ts
 import omarSam from "../assets/events/omar-sam.png";
 import nicolasTawk from "../assets/events/nicolas-tawk.png";
+import ahmadRodrigue from "../assets/events/ahmad_rodrigue.png";
+
 import ev1 from "../assets/events/event1.png"; // John Achkar / group
 import ev2 from "../assets/events/event2.png"; // Ladies' Happy Hour (Jounieh)
 import ev3 from "../assets/events/event3.png"; // The Perfect Venue
@@ -124,4 +126,17 @@ export const events: EventItem[] = [
     tags: ["Comedy", "Arabic"],
     mapsQuery: mapsByBranch["Zahle"],
   },
+  {
+  id: "ahmad-rodrigue-2025-10-11",
+  title: "Ahmad Seifeddine & Rodrigue Zgheib — Stand-up Comedy Show",
+  dateStartISO: "2025-10-11T20:00:00+03:00",
+  doorsISO: "2025-10-11T20:00:00+03:00",
+  branch: "Zahle",
+  priceUSD: 10,
+  rsvpPhone: branchPhone["Zahle"],
+  image: ahmadRodrigue,
+  description: "Stand-up Comedy Show you won't forget!.",
+  tags: ["Comedy", "Arabic"],
+  mapsQuery: mapsByBranch["Zahle"],
+},
 ];
