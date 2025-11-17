@@ -7,6 +7,8 @@ import ev1 from "../assets/events/event1.png"; // John Achkar / group
 import ev2 from "../assets/events/event2.png"; // Ladies' Happy Hour (Jounieh)
 import ev3 from "../assets/events/event3.png"; // The Perfect Venue
 import ev4 from "../assets/events/event4.png"; // DJ Night
+import ev5 from "../assets/events/event5.png"; // DJ Night
+import ev6 from "../assets/events/event6.png"; // DJ Night
 
 export type Branch = "Zahle" | "Jounieh" | "Jbeil";
 
@@ -44,8 +46,8 @@ export const events: EventItem[] = [
   {
     id: "john-achkar-watch-2025-08-10",
     title: "Community Watch Night: “John Achkar — Tryin’”",
-    dateStartISO: "2025-08-10T20:30:00+03:00",
-    doorsISO: "2025-08-10T20:00:00+03:00",
+    dateStartISO: "2025-08-10T20:30:00+02:00",
+    doorsISO: "2025-08-10T20:00:00+02:00",
     branch: "Zahle",
     priceUSD: 0, // free community hangout
     rsvpPhone: branchPhone["Zahle"],
@@ -57,8 +59,8 @@ export const events: EventItem[] = [
   {
     id: "ladies-happy-hour-2025-09-10",
     title: "Ladies’ Happy Hour (Jounieh) — At Half the Price",
-    dateStartISO: "2025-09-10T18:00:00+03:00",
-    doorsISO: "2025-09-10T18:00:00+03:00",
+    dateStartISO: "2025-09-10T18:00:00+02:00",
+    doorsISO: "2025-09-10T18:00:00+02:00",
     branch: "Jounieh",
     priceUSD: 0, // promo — prices discounted at POS
     rsvpPhone: branchPhone["Jounieh"],
@@ -73,8 +75,8 @@ export const events: EventItem[] = [
   {
     id: "the-perfect-venue-2025-10-05",
     title: "The Perfect Venue — Outdoor Showcase",
-    dateStartISO: "2025-10-05T19:30:00+03:00",
-    doorsISO: "2025-10-05T19:00:00+03:00",
+    dateStartISO: "2025-10-05T19:30:00+02:00",
+    doorsISO: "2025-10-05T19:00:00+02:00",
     branch: "Jbeil",
     priceUSD: 0,
     rsvpPhone: branchPhone["Jbeil"],
@@ -102,8 +104,8 @@ export const events: EventItem[] = [
   {
     id: "omar-layza-sam-ghazal-2025-09-20",
     title: "Omar Layza & Sam Ghazal — Stand-up Night",
-    dateStartISO: "2025-09-20T21:00:00+03:00",
-    doorsISO: "2025-09-20T20:30:00+03:00",
+    dateStartISO: "2025-09-20T21:00:00+02:00",
+    doorsISO: "2025-09-20T20:30:00+02:00",
     branch: "Zahle",
     priceUSD: 25,
     rsvpPhone: branchPhone["Zahle"],
@@ -116,8 +118,8 @@ export const events: EventItem[] = [
   {
     id: "nicolas-tawk-2025-08-13",
     title: "Nicolas Tawk — Full Hour Show",
-    dateStartISO: "2025-08-13T21:00:00+03:00",
-    doorsISO: "2025-08-13T20:30:00+03:00",
+    dateStartISO: "2025-08-13T21:00:00+02:00",
+    doorsISO: "2025-08-13T20:30:00+02:00",
     branch: "Zahle",
     priceUSD: 25,
     rsvpPhone: branchPhone["Zahle"],
@@ -129,8 +131,8 @@ export const events: EventItem[] = [
   {
   id: "ahmad-rodrigue-2025-10-11",
   title: "Ahmad Seifeddine & Rodrigue Zgheib — Stand-up Comedy Show",
-  dateStartISO: "2025-10-11T20:00:00+03:00",
-  doorsISO: "2025-10-11T20:00:00+03:00",
+  dateStartISO: "2025-10-11T20:00:00+02:00",
+  doorsISO: "2025-10-11T20:00:00+02:00",
   branch: "Zahle",
   priceUSD: 10,
   rsvpPhone: branchPhone["Zahle"],
@@ -139,4 +141,57 @@ export const events: EventItem[] = [
   tags: ["Comedy", "Arabic"],
   mapsQuery: mapsByBranch["Zahle"],
 },
+  {
+  id: "Sock It Your way - Zahle",
+  title: "Sock It Your way - Zahle",
+  dateStartISO: "2025-11-21T19:00:00+02:00",
+  doorsISO: "2025-11-21T19:00:00+02:00",
+  branch: "Zahle",
+  priceUSD: 25,
+  rsvpPhone: branchPhone["Zahle"],
+  image: ev5,
+  description: "Christmas Socks workshop with Tamara Lteif",
+  tags: ["Socks", "Christmas", "Workshop"],
+  mapsQuery: mapsByBranch["Zahle"],
+},
+  {
+  id: "Sock It Your way - Jbeil",
+  title: "Sock It Your way - Jbeil",
+  dateStartISO: "2025-11-29T17:00:00+02:00",
+  doorsISO: "2025-11-29T17:00:00+02:00",
+  branch: "Jbeil",
+  priceUSD: 25,
+  rsvpPhone: branchPhone["Jbeil"],
+  image: ev5,
+  description: "Christmas Socks workshop with Tamara Lteif",
+  tags: ["Socks", "Christmas", "Workshop"],
+  mapsQuery: mapsByBranch["Jbeil"],
+},
+  {
+  id: "Glitter Season Activated - Jbeil",
+  title: "Glitter Season Activated - Jbeil",
+  dateStartISO: "2025-12-13T16:00:00+02:00",
+  doorsISO: "2025-12-13T16:00:00+02:00",
+  branch: "Jbeil",
+  priceUSD: 25,
+  rsvpPhone: branchPhone["Jbeil"],
+  image: ev6,
+  description: "Christmas Ornaments workshop with Tamara Lteif",
+  tags: ["Christmas"],
+  mapsQuery: mapsByBranch["Jbeil"],
+},
+  {
+  id: "Glitter Season Activated - Zahle",
+  title: "Glitter Season Activated - Zahle",
+  dateStartISO: "2025-12-14T17:00:00+02:00",
+  doorsISO: "2025-12-14T17:00:00+02:00",
+  branch: "Zahle",
+  priceUSD: 25,
+  rsvpPhone: branchPhone["Zahle"],
+  image: ev6,
+  description: "Christmas Ornaments workshop with Tamara Lteif",
+  tags: ["Christmas"],
+  mapsQuery: mapsByBranch["Zahle"],
+},
+
 ];
