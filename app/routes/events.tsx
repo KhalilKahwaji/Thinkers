@@ -1,8 +1,9 @@
 import type { Route } from "./+types/events";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import EventCard from "../components/EventCard";
-import { events, type Branch } from "../data/events";
 import Reveal from "../components/Reveal";
+import { supabase } from "~/lib/supabaseClient";
+import type { Branch, EventItem } from "../data/events";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -18,19 +19,74 @@ const branches: ("All" | Branch)[] = ["All", "Zahle", "Jounieh", "Jbeil"];
 
 export default function Events() {
   const [filter, setFilter] = useState<"All" | Branch>("All");
+  const [allEvents, setAllEvents] = useState<EventItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      setLoading(true);
+      setError(null);
+
+      const { data, error } = await supabase
+        .from("events")
+        .select(
+          `
+          id,
+          title,
+          dateStartISO,
+          doorsISO,
+          branch,
+          priceUSD,
+          rsvpPhone,
+          image,
+          description,
+          tags,
+          mapsQuery,
+          ticketsUrl
+        `
+        )
+
+      if (cancelled) return;
+
+      console.log("[events fetch] error:", error);
+      console.log("[events fetch] data:", data);
+      if (error) {
+        setError(error.message);
+        setAllEvents([]);
+        setLoading(false);
+        return;
+      }
+
+      // Supabase already returns the right shapes for these columns
+      setAllEvents((data ?? []) as EventItem[]);
+      setLoading(false);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const { upcoming, past } = useMemo(() => {
     const now = Date.now();
     const filtered =
-      filter === "All" ? events : events.filter((e) => e.branch === filter);
+      filter === "All"
+        ? allEvents
+        : allEvents.filter((e) => e.branch === filter);
+
     const upcoming = filtered
       .filter((e) => new Date(e.dateStartISO).getTime() >= now)
       .sort((a, b) => +new Date(a.dateStartISO) - +new Date(b.dateStartISO));
+
     const past = filtered
       .filter((e) => new Date(e.dateStartISO).getTime() < now)
       .sort((a, b) => +new Date(b.dateStartISO) - +new Date(a.dateStartISO));
+
     return { upcoming, past };
-  }, [filter]);
+  }, [filter, allEvents]);
 
   return (
     <section>
@@ -62,38 +118,49 @@ export default function Events() {
         ))}
       </div>
 
-      {/* Upcoming */}
-      {upcoming.length > 0 && (
-        <>
-          <h2 style={{ margin: "12px 0" }}>Upcoming</h2>
-          <div style={{ display: "grid", gap: 16 }}>
-            {upcoming.map((ev, i) => (
-              <Reveal key={ev.id} delay={i * 80}>
-                <EventCard ev={ev} />
-              </Reveal>
-            ))}
-          </div>
-        </>
+      {loading && <p style={{ color: "var(--muted)" }}>Loading events…</p>}
+
+      {error && (
+        <p style={{ color: "crimson" }}>Failed to load events: {error}</p>
       )}
 
-      {past.length > 0 && (
+      {!loading && !error && (
         <>
-          <h2 style={{ margin: "24px 0 12px" }}>Past</h2>
-          <div style={{ display: "grid", gap: 16 }}>
-            {past.map((ev, i) => (
-              <Reveal key={ev.id} delay={i * 60} variant="left">
-                <EventCard ev={ev} />
-              </Reveal>
-            ))}
-          </div>
-        </>
-      )}
+          {/* Upcoming */}
+          {upcoming.length > 0 && (
+            <>
+              <h2 style={{ margin: "12px 0" }}>Upcoming</h2>
+              <div style={{ display: "grid", gap: 16 }}>
+                {upcoming.map((ev, i) => (
+                  <Reveal key={ev.id} delay={i * 80}>
+                    <EventCard ev={ev} />
+                  </Reveal>
+                ))}
+              </div>
+            </>
+          )}
 
-      {/* Empty state */}
-      {upcoming.length === 0 && past.length === 0 && (
-        <p style={{ color: "var(--muted)" }}>
-          No events found for this branch.
-        </p>
+          {/* Past */}
+          {past.length > 0 && (
+            <>
+              <h2 style={{ margin: "24px 0 12px" }}>Past</h2>
+              <div style={{ display: "grid", gap: 16 }}>
+                {past.map((ev, i) => (
+                  <Reveal key={ev.id} delay={i * 60} variant="left">
+                    <EventCard ev={ev} />
+                  </Reveal>
+                ))}
+              </div>
+            </>
+          )}
+
+          {/* Empty state */}
+          {upcoming.length === 0 && past.length === 0 && (
+            <p style={{ color: "var(--muted)" }}>
+              No events found for this branch.
+            </p>
+          )}
+        </>
       )}
     </section>
   );
