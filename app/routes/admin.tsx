@@ -167,7 +167,7 @@ export default function Admin() {
       <main style={{ maxWidth: 520, margin: "40px auto", padding: 16 }}>
         <h1 style={{ fontSize: 28, fontWeight: 700 }}>Admin Login</h1>
         <p style={{ opacity: 0.8, marginTop: 8 }}>
-          Sign in with the Supabase user you created for the business owner.
+            Please sign in with your admin credentials.
         </p>
 
         <form onSubmit={signIn} style={{ display: "grid", gap: 12, marginTop: 16 }}>
