@@ -11,6 +11,7 @@ export default [
   route("expansion", "routes/expansion.tsx"),
   route("community", "routes/community.tsx"),
   route("mission", "routes/mission.tsx"),
-
+  route("admin", "routes/admin.tsx"),
+  
   route("*", "routes/not-found.tsx"),
 ] satisfies RouteConfig;

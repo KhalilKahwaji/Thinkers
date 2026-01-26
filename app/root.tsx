@@ -95,7 +95,7 @@ export default function Root() {
           margin: 0,
         }}
       >
-        {!isBlankLayout && <Navbar />}
+        {!isBlankLayout  && <Navbar />}
 
         <main style={mainStyle}>
           <Outlet />
